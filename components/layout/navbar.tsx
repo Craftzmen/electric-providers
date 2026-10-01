@@ -114,17 +114,17 @@ export function Navbar() {
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between gap-6 px-5 md:px-8"
+        className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between gap-3 px-5 md:px-8 xl:gap-6"
       >
-        <BrandLogo size="sm" />
+        <BrandLogo size="sm" className="shrink-0" />
 
-        <ul className="hidden h-full items-center gap-1 lg:flex">
-          {mainNav.map((item) => (
+        <ul className="hidden h-full items-center lg:flex">
+          {[...mainNav, ...policyNav].map((item) => (
             <li key={item.href} className="h-full">
               <Link
                 href={item.href}
                 className={cn(
-                  "relative inline-flex h-full items-center px-3 text-sm font-semibold transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-[3px] after:rounded-t-full after:transition-colors",
+                  "relative inline-flex h-full items-center px-1.5 text-[13px] font-semibold whitespace-nowrap transition-colors after:absolute after:inset-x-1.5 after:bottom-0 after:h-[3px] after:rounded-t-full after:transition-colors xl:px-3 xl:text-sm xl:after:inset-x-3",
                   isActive(item.href)
                     ? "text-forest after:bg-lime-deep"
                     : "text-forest/65 after:bg-transparent hover:text-forest"
@@ -190,7 +190,7 @@ export function Navbar() {
               </div>
               <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-5 pb-8">
                 <ul className="mt-4 divide-y divide-forest/10">
-                  {mainNav.map((link) => (
+                  {[...mainNav, ...policyNav].map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
@@ -208,7 +208,7 @@ export function Navbar() {
                 </ul>
 
                 <div className="mt-8 flex flex-wrap gap-2">
-                  {[...audienceNav, ...utilityNav, ...policyNav].map((link) => (
+                  {[...audienceNav, ...utilityNav].map((link) => (
                     <Link
                       key={link.label}
                       href={link.href}
